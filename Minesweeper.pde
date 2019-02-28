@@ -2,8 +2,8 @@ import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
-private int NUM_COLS =20;
-private int NUM_ROWS =20;
+public final static int NUM_COLS =20;
+public final static int NUM_ROWS =20;
 
 void setup ()
 {
@@ -28,12 +28,16 @@ public void setBombs()
   //Go to line 25 and write the setBombs() function. It should generate a random row and column number. 
   //Use the contains() function to check to see if the button at that random row and col is already in bombs. If it isn't then add it
     //your code
-    final int rows = (int)Math.random();
-    final int  cols = (int)Math.random();
+int rows = (int)Math.random()*NUM_ROWS;
+int  cols = (int)Math.random()* NUM_COLS;
     
-    if(bombs.contains(
+    if(bombs.contains(){
+      
+    }
+      
     
 }
+
 
 public void draw ()
 {
