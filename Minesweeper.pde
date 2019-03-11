@@ -2,8 +2,8 @@ import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
-public final static int NUM_COLS =5;
-public final static int NUM_ROWS =5;
+public final static int NUM_COLS =20;
+public final static int NUM_ROWS =20;
 
 void setup ()
 {
@@ -48,6 +48,13 @@ public void draw ()
 }
 public boolean isWon()
 {
+  for(int i =0; i<NUM_ROWS; i++){
+    for(int j =0; j<NUM_COLS; j++){
+  if(buttons[i][j].isMarked()==true){
+  return true;
+  }
+    }
+  }
   //your code here
   return false;
 }
@@ -105,9 +112,11 @@ public class MSButton
       //Note that to convert the int that countBombs() returns to a String you can add an empty string: ""+countBombs()
       else if (countBombs(r, c)>0) {
         setLabel(countBombs(r, c) + ""); 
-
         //your code here
       }
+      else{
+       mousePressed();
+    }
     }
   }
   public void draw () 
