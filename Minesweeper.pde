@@ -20,7 +20,7 @@ void setup ()
       buttons [i][j] = new MSButton(i, j);
     }
   }
-
+ bombs = new ArrayList<MSButton>();
   setBombs();
 }
 public void setBombs()
@@ -60,10 +60,22 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-  //your code here
+ for(int r = 0; r < NUM_ROWS; r++)
+    {
+        for(int c = 0; c < NUM_COLS; c++)
+        {
+            if(!buttons[r][c].isClicked() && bombs.contains(buttons[r][c]))
+            {
+                buttons[r][c].marked = false;
+                buttons[r][c].clicked = true;
+                buttons[0][0].setLabel("You Lose!");
+            }
+        }
+    }
 }
 public void displayWinningMessage()
 {
+   buttons[0][0].setLabel("You Win!");
   //your code here
 }
 
@@ -115,7 +127,22 @@ public class MSButton
         //your code here
       }
       else{
-       mousePressed();
+            if(isValid(r,c-1) && buttons[r][c-1].clicked == false)
+                buttons[r][c-1].mousePressed();
+            if(isValid(r,c+1) && buttons[r][c+1].clicked == false)
+                buttons[r][c+1].mousePressed();
+            if(isValid(r-1,c) && buttons[r-1][c].clicked == false)
+                buttons[r-1][c].mousePressed();  
+            if(isValid(r+1,c) && buttons[r+1][c].clicked == false)
+                buttons[r+1][c].mousePressed();
+            if(isValid(r+1,c+1) && buttons[r+1][c+1].clicked == false)
+                buttons[r+1][c+1].mousePressed();
+            if(isValid(r+1,c-1) && buttons[r+1][c-1].clicked == false)
+                buttons[r+1][c-1].mousePressed();
+            if(isValid(r-1,c-1) && buttons[r-1][c-1].clicked == false)
+                buttons[r-1][c-1].mousePressed();    
+            if(isValid(r-1,c+1) && buttons[r-1][c+1].clicked == false)
+                buttons[r-1][c+1].mousePressed();   
     }
     }
   }
